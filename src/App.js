@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import LoginPage from './pages/LoginPage';
 import './App.css';
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn aws
         </a>
       </header>
+      <LoginPage />
     </div>
   );
 }
