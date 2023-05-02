@@ -1,7 +1,23 @@
+import { LoginStatus } from "../utils/Auth"
+
 function LandingPage() {
-    return (
-        <h1>landing page</h1>
-    );
+
+  let landingPageJSX
+  let isLoggedIn = LoginStatus()
+
+  if (isLoggedIn !== true) {
+    landingPageJSX = isLoggedIn
+  } else {
+    // edit the webpage from here
+    landingPageJSX = <h1>we are at the landing page!</h1>
+  }
+
+  return (
+    <>
+      {landingPageJSX}
+    </>
+  )
+
   }
   
 export default LandingPage;
