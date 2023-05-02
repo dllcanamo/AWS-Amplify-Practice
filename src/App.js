@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import ReportsPage from './pages/ReportsPage';
 import SurveillancePage from './pages/SurveillancePage';
 import UserConfigPage from './pages/UserConfigPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path='/surveillance' element={<SurveillancePage />} />
       <Route path='/reports' element={<ReportsPage />} />
       <Route path='/user-config' element={<UserConfigPage />} />
+      <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );
 }
