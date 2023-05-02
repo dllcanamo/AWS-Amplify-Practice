@@ -1,7 +1,7 @@
 function LoginPage() {
     return (
-        <h1>PANIS YESSIR!</h1>
+        <h1>login YESSIR!</h1>
     );
   }
   
-  export default LoginPage;
+export default LoginPage;
