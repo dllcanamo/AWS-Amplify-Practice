@@ -4,4 +4,4 @@ function SurveillancePage() {
     );
   }
   
-export default SurveillancePage;
+export { SurveillancePage}

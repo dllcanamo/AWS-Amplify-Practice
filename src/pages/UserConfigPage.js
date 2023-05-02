@@ -4,4 +4,4 @@ function UserConfigPage() {
     );
   }
   
-export default UserConfigPage;
+export { UserConfigPage}

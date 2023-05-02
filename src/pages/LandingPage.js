@@ -4,4 +4,4 @@ function LandingPage() {
     );
   }
   
-export default LandingPage;
+export {LandingPage}
