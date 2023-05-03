@@ -37,7 +37,7 @@ function LoginPage() {
       <>
         <h1>Aegis Ai</h1>
         <form onSubmit={handleFormSubmit}>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"

@@ -1,4 +1,6 @@
 import { LoginStatus } from "../utils/Auth"
+import TopNavbar from "../components/TopNavbar"
+import classes from "./landing-page.module.css"
 
 function LandingPage() {
 
@@ -9,7 +11,10 @@ function LandingPage() {
     landingPageJSX = isLoggedIn
   } else {
     // edit the webpage from here
-    landingPageJSX = <h1>we are at the landing page!</h1>
+    landingPageJSX = <>
+      <TopNavbar></TopNavbar>
+      <h1>we are at the landing page!</h1>
+    </>
   }
 
   return (
