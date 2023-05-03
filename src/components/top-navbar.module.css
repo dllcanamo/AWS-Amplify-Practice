@@ -1,0 +1,26 @@
+.topNavbar {
+    height: 70px;
+    background-color: red;
+}
+
+.logoDiv {
+    height: 100%;
+    background-color: green;
+    width: 20%;
+    display: inline-block;
+}
+
+.logoutDiv {
+    height: 100%;
+    background-color: blue;
+    width: 150px;
+    float: right;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoutBtn {
+}
