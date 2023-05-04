@@ -13,6 +13,8 @@ import "./App.css";
 function App() {
   return (
     <>
+      <Link to="/">Home</Link>
+      <Link to="/login"> LogIn </Link>
       <Routes>
         <Route exec path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -21,8 +23,6 @@ function App() {
         <Route path="/user-config" element={<UserConfigPage />} />
         <Route path="/producer" element={<ProducerPage />} />
       </Routes>
-      <Link to='/' relative="path"> Home </Link>
-      <Link to='/login'> LogIn </Link>
     </>
   );
 }

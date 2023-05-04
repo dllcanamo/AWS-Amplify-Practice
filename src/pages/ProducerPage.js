@@ -1,28 +1,47 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { InferenceSession, Tensor } from "onnxruntime-web";
 
 function ProducerPage() {
   const videoRef = useRef(null);
+  const [model, setModel] = useState(null);
 
   useEffect(() => {
-    getVideo();
-  }, [videoRef]);
+    loadModel();
+  }, []);
 
-  const getVideo = () => {
-    navigator.mediaDevices
-      .getUserMedia({ video: { width: 300 } })
-      .then((stream) => {
-        let video = videoRef.current;
-        video.srcObject = stream;
-        video.play();
-      })
-      .catch((err) => {
-        console.error("error", err);
-      });
+  const loadModel = async () => {
+    // const response = await fetch("../../public/models/best.onnx");
+    // const buffer = await response.arrayBuffer();
+    // const tensor = new Tensor(new Uint8Array(buffer), "uint8");
+    // await session.loadModel("../../public/models/best.onnx");
+    const session = await InferenceSession.create("../../public/models/best.onnx");
+    setModel(session);
+    console.log(model)
   };
+
+  const getVideo = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const video = videoRef.current;
+      video.srcObject = stream;
+      await video.play();
+      detectObjects();
+    } catch (err) {
+      console.error("error", err);
+    }
+  };
+
+  const detectObjects = async () => {
+    if (!model || !videoRef.current) {
+      return;
+    }
+
+  };
+
   return (
     <div>
       <video ref={videoRef} />
-      <canvas />
+      <button onClick={getVideo}>Start Video</button>
     </div>
   );
 }

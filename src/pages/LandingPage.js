@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
 const LinkButtons = (props) => {
-  console.log(props.pages);
   const page_dict = props.pages;
   const page_title = Object.keys(page_dict);
   return (
     <ul>
       {page_title.map((title, index) => (
-        <li>
+        <li key={title}>
           <Link to={page_dict[title]}>{title}</Link>
         </li>
       ))}
