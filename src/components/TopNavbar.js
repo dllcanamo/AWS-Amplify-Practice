@@ -1,12 +1,9 @@
-import { Tabs, TabItem, Flex, MenuItem, Menu } from "@aws-amplify/ui-react";
+import { Tabs, TabItem, Flex, MenuItem, Menu, Heading } from "@aws-amplify/ui-react";
 import { logout } from "../utils/logout";
 
-function TopNavbar() {
+function TitleBar(props) {
   return (
-    <Flex justifyContent="space-between" alignContent="center">
-      <Tabs>
-        <TabItem title="Tab1"></TabItem>
-      </Tabs>
+    <Flex justifyContent="flex-end" alignContent="center">
       <Menu>
         <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
@@ -14,4 +11,4 @@ function TopNavbar() {
   );
 }
 
-export default TopNavbar;
+export default TitleBar;
