@@ -1,0 +1,13 @@
+{
+  "resourceName": "aimlbootcampfinalproject",
+  "policyUUID": "3f2e88ac",
+  "bucketName": "2023-aiml-bootcamp-final-project",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

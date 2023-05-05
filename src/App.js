@@ -1,4 +1,7 @@
 // import logo from './logo.svg';
+import '@aws-amplify/ui-react/styles.css';
+import { Amplify } from 'aws-amplify'
+import { withAuthenticator } from '@aws-amplify/ui-react'
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import LandingPage from './pages/LandingPage';
@@ -7,18 +10,24 @@ import SurveillancePage from './pages/SurveillancePage';
 import UserConfigPage from './pages/UserConfigPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
+import awsconfig from './aws-exports';
+
+Amplify.configure(awsconfig)
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<LandingPage />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/surveillance' element={<SurveillancePage />} />
-      <Route path='/reports' element={<ReportsPage />} />
-      <Route path='/user-config' element={<UserConfigPage />} />
-      <Route path='*' element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/surveillance' element={<SurveillancePage />} />
+        <Route path='/reports' element={<ReportsPage />} />
+        <Route path='/user-config' element={<UserConfigPage />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
+    </>
+
   );
 }
 
-export default App;
+export default withAuthenticator(App);

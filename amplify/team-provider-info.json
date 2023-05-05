@@ -9,7 +9,23 @@
       "UnauthRoleName": "amplify-awsamplifypractice-dev-103743-unauthRole",
       "StackName": "amplify-awsamplifypractice-dev-103743",
       "StackId": "arn:aws:cloudformation:us-west-2:021454448884:stack/amplify-awsamplifypractice-dev-103743/85973b50-e95b-11ed-9f8f-06378f361317",
-      "AmplifyAppId": "d27wlsujyjoclb"
+      "AmplifyAppId": "d27wlsujyjoclb",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-awsamplifypractice-dev-103743-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "awsamplifypractice8dce617b": {}
+      },
+      "function": {
+        "awsamplifypractice8dce617bPreSignup": {
+          "DOMAINALLOWLIST": "pointwest.com.ph",
+          "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
+          "s3Key": "amplify-builds/awsamplifypractice8dce617bPreSignup-305770586b4b63307756-build.zip"
+        }
+      },
+      "storage": {
+        "aimlbootcampfinalproject": {}
+      }
     }
   }
 }
