@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Webcam } from "../utils/webcam";
 
-const ButtonHandler = ({ imageRef, cameraRef, videoRef }) => {
+const ButtonHandler = ({ imageRef, cameraRef, videoRef, canvasRef }) => {
   const [streaming, setStreaming] = useState(null); // streaming state
   const inputImageRef = useRef(null); // video input reference
   const inputVideoRef = useRef(null); // video input reference
@@ -50,7 +50,10 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef }) => {
           if (streaming === null) inputImageRef.current.click();
           // closing image streaming
           else if (streaming === "image") closeImage();
-          else alert(`Can't handle more than 1 stream\nCurrently streaming : ${streaming}`); // if streaming video or webcam
+          else
+            alert(
+              `Can't handle more than 1 stream\nCurrently streaming : ${streaming}`
+            ); // if streaming video or webcam
         }}
       >
         {streaming === "image" ? "Close" : "Open"} Image
@@ -74,10 +77,14 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef }) => {
       <button
         onClick={() => {
           // if not streaming
-          if (streaming === null || streaming === "image") inputVideoRef.current.click();
+          if (streaming === null || streaming === "image")
+            inputVideoRef.current.click();
           // closing video streaming
           else if (streaming === "video") closeVideo();
-          else alert(`Can't handle more than 1 stream\nCurrently streaming : ${streaming}`); // if streaming webcam
+          else
+            alert(
+              `Can't handle more than 1 stream\nCurrently streaming : ${streaming}`
+            ); // if streaming webcam
         }}
       >
         {streaming === "video" ? "Close" : "Open"} Video
@@ -99,10 +106,34 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef }) => {
             webcam.close(cameraRef.current);
             cameraRef.current.style.display = "none";
             setStreaming(null);
-          } else alert(`Can't handle more than 1 stream\nCurrently streaming : ${streaming}`); // if streaming video
+          } else
+            alert(
+              `Can't handle more than 1 stream\nCurrently streaming : ${streaming}`
+            ); // if streaming video
         }}
       >
         {streaming === "camera" ? "Close" : "Open"} Webcam
+      </button>
+      <button
+        onClick={() => {
+          // const newCanvas = document.createElement("canvas");
+          // const newCtx = newCanvas.getContext("2d");
+          //
+          // newCtx.drawImage(
+          //   canvasRef.current,
+          //   0,
+          //   0,
+          //   canvasRef.current.height,
+          //   canvasRef.current.width
+          // );
+          const image = canvasRef.current.toDataURL("image/jpeg");
+          console.log(image)
+
+          
+          // document.body.appendChild(newCanvas);
+        }}
+      >
+        capture
       </button>
     </div>
   );

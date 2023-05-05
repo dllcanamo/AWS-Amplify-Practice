@@ -20,6 +20,7 @@ export const renderBoxes = (
 ) => {
   const ctx = canvasRef.getContext("2d");
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clean canvas
+  ctx.drawImage(vidSource, 0, 0, canvasRef.width, canvasRef.height)
 
   const colors = new Colors();
 
@@ -50,7 +51,6 @@ export const renderBoxes = (
       const width = x2 - x1;
       const height = y2 - y1;
 
-      ctx.drawImage(vidSource, 0, 0, )
       // console.log(canvasRef.toDataURL('image/png'))
 
       // draw box.
@@ -79,7 +79,7 @@ export const renderBoxes = (
 
       // console.log(canvasRef.toDataURL('image/png'))
       // ctx.drawImage(vidSource, 0, 0, canvasRef.width, canvasRef.width)
-      console.log(canvasRef.toDataURL('image/png'))
+      // console.log(canvasRef.toDataURL('image/png'))
     }
   }
 

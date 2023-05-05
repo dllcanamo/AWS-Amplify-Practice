@@ -85,7 +85,7 @@ function SurveillancePage() {
           <a id='canvasDownload' href='#'>download image</a>
         </div>
 
-        <ButtonHandler imageRef={imageRef} cameraRef={cameraRef} videoRef={videoRef} />
+        <ButtonHandler imageRef={imageRef} cameraRef={cameraRef} videoRef={videoRef} canvasRef={canvasRef}/>
       </div>
       );
   }
