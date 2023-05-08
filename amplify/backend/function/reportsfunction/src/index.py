@@ -12,7 +12,7 @@ def handler(event, context):
         data = event['body']
 
         response = dynamodb.put_item(
-            TableName='reportsdb',
+            TableName='reportsdb-dev',
             Item={
                 'uuid': {'S': 'sample-uuid'},
                 'datetime': {'S': 'sample-date'},
