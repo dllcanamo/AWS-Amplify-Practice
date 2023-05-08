@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "storage": {
+      "aimlbootcampfinalproject": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "aimlBootcamp2023DB": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "reportsapi": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
