@@ -2,8 +2,8 @@ import json
 import boto3
 
 def handler(event, context):
-    print('received event:')
-    print(event)
+    # print('received event:')
+    # print(event)
 
     dynamodb = boto3.client('dynamodb')
 
@@ -21,7 +21,11 @@ def handler(event, context):
             }
         )
 
-        print(response)
+        message = ''
+        if response:
+            message = 'item/s successfully added to database'
+        else:
+            message = 'an error occured with your request'
 
         return {
             'statusCode': 200,
@@ -30,7 +34,7 @@ def handler(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
             },
-            'body': json.dumps(response)
+            'body': json.dumps(message)
         }
     else:
         # get inputs from dynamoDB
