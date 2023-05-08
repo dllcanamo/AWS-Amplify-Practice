@@ -7,13 +7,6 @@
       "permissions": {
         "setting": "open"
       }
-    },
-    "/reportspython": {
-      "name": "/reportspython",
-      "lambdaFunction": "reportsfunctionpython",
-      "permissions": {
-        "setting": "open"
-      }
     }
   }
 }
