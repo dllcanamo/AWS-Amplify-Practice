@@ -21,7 +21,10 @@ def handler(event, context):
             }
         )
 
-        print(response)
+        if response:
+            message = 'item added successfully'
+        else:
+            message = 'there was an error in your request'
 
         return {
             'statusCode': 200,
@@ -30,7 +33,7 @@ def handler(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
             },
-            'body': json.dumps(response)
+            'body': json.dumps(message)
         }
     else:
         # get inputs from dynamoDB
@@ -44,5 +47,3 @@ def handler(event, context):
             },
             'body': json.dumps(event)
         }
-
-
