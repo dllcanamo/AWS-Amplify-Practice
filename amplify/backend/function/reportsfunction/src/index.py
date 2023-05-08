@@ -21,11 +21,11 @@ def handler(event, context):
             }
         )
 
-        message = ''
-        if response:
-            message = 'item/s successfully added to database'
-        else:
-            message = 'an error occured with your request'
+        # message = ''
+        # if response:
+        #     message = 'item/s successfully added to database'
+        # else:
+        #     message = 'an error occured with your request'
 
         return {
             'statusCode': 200,
@@ -34,7 +34,7 @@ def handler(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
             },
-            'body': json.dumps(message)
+            'body': json.dumps('Item/s saved successfully!')
         }
     else:
         # get inputs from dynamoDB
