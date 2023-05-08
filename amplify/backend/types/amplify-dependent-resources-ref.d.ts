@@ -20,6 +20,16 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "aimlBootcamp2023DB": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "SortKeyName": "string",
+      "SortKeyType": "string",
+      "StreamArn": "string"
+    },
     "aimlbootcampfinalproject": {
       "BucketName": "string",
       "Region": "string"

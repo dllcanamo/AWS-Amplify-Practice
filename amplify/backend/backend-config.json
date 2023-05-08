@@ -69,6 +69,10 @@
     }
   },
   "storage": {
+    "aimlBootcamp2023DB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "aimlbootcampfinalproject": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",

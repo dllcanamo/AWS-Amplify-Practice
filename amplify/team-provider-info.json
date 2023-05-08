@@ -24,7 +24,8 @@
         }
       },
       "storage": {
-        "aimlbootcampfinalproject": {}
+        "aimlbootcampfinalproject": {},
+        "aimlBootcamp2023DB": {}
       }
     }
   }
