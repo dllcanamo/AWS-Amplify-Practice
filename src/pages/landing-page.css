@@ -1,0 +1,17 @@
+.landing {
+    display: flex !important;
+    text-align: center !important;
+    justify-content: center !important;
+}
+
+.landing:hover {
+    cursor: pointer;
+    background-color: hsl(190, 75%, 95%);
+    border-color: hsl(190, 50%, 50%) !important;
+    color: hsl(190, 100%, 15%) !important;
+}
+
+.landing:hover > .amplify-heading--3 {
+    color: hsl(190, 100%, 15%) !important;
+    height: auto;
+}
