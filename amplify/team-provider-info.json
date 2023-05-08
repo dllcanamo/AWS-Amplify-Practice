@@ -24,7 +24,7 @@
         },
         "reportsfunction": {
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/reportsfunction-4e6f526f45586869616d-build.zip"
+          "s3Key": "amplify-builds/reportsfunction-52356a6b4d7772753578-build.zip"
         }
       },
       "storage": {
