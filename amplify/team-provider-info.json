@@ -24,15 +24,7 @@
         },
         "reportsfunction": {
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/reportsfunction-75614171694458513861-build.zip"
-        },
-        "reportsfunctionnode": {
-          "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/reportsfunctionnode-716d412b476a4f4d4451-build.zip"
-        },
-        "reportsfunctionpython": {
-          "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/reportsfunctionpython-327a6d53344631725678-build.zip"
+          "s3Key": "amplify-builds/reportsfunction-4e6f526f45586869616d-build.zip"
         }
       },
       "storage": {
@@ -40,7 +32,7 @@
         "aimlBootcamp2023DB": {}
       },
       "api": {
-        "reportsapi": {}
+        "reportsapipy": {}
       }
     }
   }

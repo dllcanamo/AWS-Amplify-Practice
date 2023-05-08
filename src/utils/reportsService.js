@@ -13,13 +13,13 @@ function saveDataToDynamo(dataToPass) {
         }
     }
 
-    API.post('reportsapi', '/reports', body)
+    API.post('reportsapipy', '/reports', body)
     .then(response => console.log(response))
     .catch(error => console.log(error));
 }
 
 function getDataFromDynamo(data) {
-    API.get('reportsapi', '/reports')
+    API.get('reportsapipy', '/reports')
     .then(response => console.log(response))
     .catch(error => console.log(error));
 }
