@@ -62,6 +62,12 @@
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "reportsfunctionnode": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -102,6 +108,22 @@
         {
           "category": "function",
           "resourceName": "reportsfunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_reportsfunctionnode_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reportsfunctionnode"
+        }
+      ]
+    },
+    "AMPLIFY_function_reportsfunctionnode_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reportsfunctionnode"
         }
       ]
     }
