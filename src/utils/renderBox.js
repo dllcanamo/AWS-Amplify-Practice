@@ -17,11 +17,12 @@ export const renderBoxes = (
   classes_data,
   ratios,
   vidSource,
-  drawVid = false
+  forUpload = false
 ) => {
   const ctx = canvasRef.getContext("2d");
+  const classFilter = []
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clean canvas
-  if (drawVid) {
+  if (forUpload) {
     ctx.drawImage(vidSource, 0, 0, canvasRef.width, canvasRef.width)
   }
 
@@ -41,6 +42,7 @@ export const renderBoxes = (
       const klass = labels[classes_data[i]];
       const color = colors.get(classes_data[i]);
       const score = (scores_data[i] * 100).toFixed(1);
+
 
       let [x1, y1, x2, y2] = boxes_data.slice(i * 4, (i + 1) * 4);
       x1 *= canvasRef.width * ratios[0];

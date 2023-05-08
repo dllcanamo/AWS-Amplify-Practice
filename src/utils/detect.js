@@ -99,6 +99,7 @@ export const detectVideo = (
   newCanvas.width = canvasRef.width;
   newCanvas.height = canvasRef.height;
   const interval = 1000;
+  let isGettingImageArray = false
 
   /**
    * Function to detect every frame from video
@@ -133,7 +134,14 @@ export const detectVideo = (
     ); // render boxes
 
     /* For Saving to S3 */
-    if (!intervalId && imageCollection.length === 0) {
+
+    const notFilter = [19, 67] // Should be taken from config?? // Classes that are NOT of compliance // 
+    const isNotCompliance = notFilter.some(r => classes_data.includes(r));
+
+    if (!intervalId && imageCollection.length === 0 && isNotCompliance && !isGettingImageArray) {
+      console.log('detected no helmet, no mask, etc')
+      isGettingImageArray = true
+      console.log('starting getting image array')
       intervalId = setInterval(
         (collection) => {
           renderBoxes(
@@ -146,13 +154,9 @@ export const detectVideo = (
             vidSource,
             true
           );
-          // const newImage = newCanvas.toDataURL("image/jpeg");
-          // if (collection.length <= 5) {
-          //   console.log("Add New Photo");
-          //   collection.push(newImage);
-          // }
           newCanvas.toBlob((blob) => {
-            // let url = URL.createObjectURL(blob);
+            let url = URL.createObjectURL(blob);
+            console.log(url)
             collection.push(blob);
           }, "image/jpeg");
         },
@@ -165,6 +169,8 @@ export const detectVideo = (
       setUploadArray(imageCollection);
       imageCollection = []
       intervalId = false
+      isGettingImageArray = false
+      console.log('finished getting image array')
     }
     tf.dispose(res); // clear memory
 
