@@ -24,11 +24,11 @@
         },
         "reportsfunction": {
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/reportsfunction-4d432f52785a632f4b4f-build.zip"
+          "s3Key": "amplify-builds/reportsfunction-75614171694458513861-build.zip"
         },
         "reportsfunctionnode": {
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/reportsfunctionnode-5671666c324d39334670-build.zip"
+          "s3Key": "amplify-builds/reportsfunctionnode-6159307465677a534b75-build.zip"
         }
       },
       "storage": {
