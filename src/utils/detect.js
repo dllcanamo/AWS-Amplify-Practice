@@ -1,5 +1,6 @@
 import * as tf from "@tensorflow/tfjs";
 import { renderBoxes } from "./renderBox";
+import { uploadBlobs } from "./uploadBlobs";
 
 /**
  * Preprocess image / frame before forwarded into the model
@@ -42,18 +43,34 @@ const preprocess = (source, modelWidth, modelHeight) => {
  * @param {Number} classThreshold class threshold
  * @param {HTMLCanvasElement} canvasRef canvas reference
  */
-export const detectImage = async (imgSource, model, classThreshold, canvasRef) => {
+export const detectImage = async (
+  imgSource,
+  model,
+  classThreshold,
+  canvasRef
+) => {
   const [modelWidth, modelHeight] = model.inputShape.slice(1, 3); // get model width and height
 
   tf.engine().startScope(); // start scoping tf engine
-  const [input, xRatio, yRatio] = preprocess(imgSource, modelWidth, modelHeight);
+  const [input, xRatio, yRatio] = preprocess(
+    imgSource,
+    modelWidth,
+    modelHeight
+  );
 
   await model.net.executeAsync(input).then((res) => {
     const [boxes, scores, classes] = res.slice(0, 3);
     const boxes_data = boxes.dataSync();
     const scores_data = scores.dataSync();
     const classes_data = classes.dataSync();
-    renderBoxes(canvasRef, classThreshold, boxes_data, scores_data, classes_data, [xRatio, yRatio]); // render boxes
+    renderBoxes(
+      canvasRef,
+      classThreshold,
+      boxes_data,
+      scores_data,
+      classes_data,
+      [xRatio, yRatio]
+    ); // render boxes
     tf.dispose(res); // clear memory
   });
 
@@ -67,8 +84,21 @@ export const detectImage = async (imgSource, model, classThreshold, canvasRef) =
  * @param {Number} classThreshold class threshold
  * @param {HTMLCanvasElement} canvasRef canvas reference
  */
-export const detectVideo = (vidSource, model, classThreshold, canvasRef) => {
+export const detectVideo = (
+  vidSource,
+  model,
+  classThreshold,
+  canvasRef,
+  uploadArray,
+  setUploadArray
+) => {
   const [modelWidth, modelHeight] = model.inputShape.slice(1, 3); // get model width and height
+  let imageCollection = [];
+  let intervalId;
+  const newCanvas = document.createElement("canvas");
+  newCanvas.width = canvasRef.width;
+  newCanvas.height = canvasRef.height;
+  const interval = 1000;
 
   /**
    * Function to detect every frame from video
@@ -81,19 +111,62 @@ export const detectVideo = (vidSource, model, classThreshold, canvasRef) => {
     }
 
     tf.engine().startScope(); // start scoping tf engine
-    const [input, xRatio, yRatio] = preprocess(vidSource, modelWidth, modelHeight);
+    const [input, xRatio, yRatio] = preprocess(
+      vidSource,
+      modelWidth,
+      modelHeight
+    );
 
-    await model.net.executeAsync(input).then((res) => {
-      const [boxes, scores, classes] = res.slice(0, 3);
-      const boxes_data = boxes.dataSync();
-      const scores_data = scores.dataSync();
-      const classes_data = classes.dataSync();
-      renderBoxes(canvasRef, classThreshold, boxes_data, scores_data, classes_data, [
-        xRatio,
-        yRatio,
-      ], vidSource); // render boxes
-      tf.dispose(res); // clear memory
-    });
+    const res = await model.net.executeAsync(input);
+    const [boxes, scores, classes] = res.slice(0, 3);
+    const boxes_data = boxes.dataSync();
+    const scores_data = scores.dataSync();
+    const classes_data = classes.dataSync();
+    renderBoxes(
+      canvasRef,
+      classThreshold,
+      boxes_data,
+      scores_data,
+      classes_data,
+      [xRatio, yRatio],
+      vidSource
+    ); // render boxes
+
+    /* For Saving to S3 */
+    if (!intervalId && imageCollection.length === 0) {
+      intervalId = setInterval(
+        (collection) => {
+          renderBoxes(
+            newCanvas,
+            classThreshold,
+            boxes_data,
+            scores_data,
+            classes_data,
+            [xRatio, yRatio],
+            vidSource,
+            true
+          );
+          // const newImage = newCanvas.toDataURL("image/jpeg");
+          // if (collection.length <= 5) {
+          //   console.log("Add New Photo");
+          //   collection.push(newImage);
+          // }
+          newCanvas.toBlob((blob) => {
+            // let url = URL.createObjectURL(blob);
+            collection.push(blob);
+          }, "image/jpeg");
+        },
+        interval,
+        imageCollection
+      );
+    }
+    if (imageCollection.length === 5) {
+      clearInterval(intervalId);
+      setUploadArray(imageCollection);
+      imageCollection = []
+      intervalId = false
+    }
+    tf.dispose(res); // clear memory
 
     requestAnimationFrame(detectFrame); // get another frame
     tf.engine().endScope(); // end of scoping

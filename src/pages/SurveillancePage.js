@@ -4,15 +4,17 @@ import "@tensorflow/tfjs-backend-webgl"; // set backend to webgl
 import Loader from "../components/loader";
 import ButtonHandler from "../components/btn-handler";
 import { detectImage, detectVideo } from "../utils/detect";
-import classes  from "./surveillance-page.module.css"
+import classes from "./surveillance-page.module.css";
+import { uploadBlobs } from "../utils/uploadBlobs";
 
 function SurveillancePage() {
-
   const [loading, setLoading] = useState({ loading: true, progress: 0 }); // loading state
   const [model, setModel] = useState({
     net: null,
     inputShape: [1, 0, 0, 3],
   }); // init model & input shape
+  const [uploadArray, setUploadArray] = useState([]);
+  const [s3Upload, setS3Upload] = useState(false)
 
   // references
   const imageRef = useRef(null);
@@ -49,45 +51,100 @@ function SurveillancePage() {
     });
   }, []);
 
-    return (
-      <div className={classes.App}>
-        {loading.loading && <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>}
-        <div className={classes.header}>
-          <h1>📷 YOLOv5 Live Detection App</h1>
-          <p>
-            YOLOv5 live detection application on browser powered by <code>tensorflow.js</code>
-          </p>
-          <p>
-            Serving : <code className={classes.code}>{modelName}</code>
-          </p>
-        </div>
+  useEffect(() => {
+    console.log(s3Upload)
+    if (uploadArray.length > 0 && !s3Upload) {
+      const test = async ()=>{
+        setS3Upload(true)
+        console.log('uploading to s3')
+        console.log(uploadArray)
+        const result = await uploadBlobs(uploadArray)
+        console.log(result)
+        setUploadArray([]);
+        setS3Upload(false)
+      }
+      try{
+      test()
+      } catch (err){
+        console.error(err)
+      }
 
-        <div className={classes.content}>
-          <img
-            src="#"
-            ref={imageRef}
-            onLoad={() => detectImage(imageRef.current, model, classThreshold, canvasRef.current)}
-          />
-          <video
-            autoPlay
-            muted
-            ref={cameraRef}
-            onPlay={() => detectVideo(cameraRef.current, model, classThreshold, canvasRef.current)}
-          />
-          <video
-            autoPlay
-            muted
-            ref={videoRef}
-            onPlay={() => detectVideo(videoRef.current, model, classThreshold, canvasRef.current)}
-          />
-          {/* <canvas width={model.inputShape[1]} height={model.inputShape[2]} ref={canvasRef} id='myCanvas'/> */}
-          <canvas width={model.inputShape[1]} height={model.inputShape[2]} ref={canvasRef} id='myCanvas'/>
-          <a id='canvasDownload' href='#'>download image</a>
-        </div>
+      
+    }
+  }, [uploadArray]);
 
-        <ButtonHandler imageRef={imageRef} cameraRef={cameraRef} videoRef={videoRef} canvasRef={canvasRef}/>
+  return (
+    <div className={classes.App}>
+      {loading.loading && (
+        <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>
+      )}
+      <div className={classes.header}>
+        <h1>Insert appname here</h1>
       </div>
-      );
-  }
-  
+
+      <div className={classes.content}>
+        <img
+          src="#"
+          ref={imageRef}
+          onLoad={() =>
+            detectImage(
+              imageRef.current,
+              model,
+              classThreshold,
+              canvasRef.current
+            )
+          }
+        />
+        <video
+          autoPlay
+          muted
+          ref={cameraRef}
+          onPlay={() =>
+            detectVideo(
+              cameraRef.current,
+              model,
+              classThreshold,
+              canvasRef.current,
+              uploadArray,
+              setUploadArray
+            )
+          }
+        />
+        <video
+          autoPlay
+          muted
+          ref={videoRef}
+          onPlay={() =>
+            detectVideo(
+              videoRef.current,
+              model,
+              classThreshold,
+              canvasRef.current,
+              uploadArray,
+              setUploadArray
+            )
+          }
+        />
+        {/* <canvas width={model.inputShape[1]} height={model.inputShape[2]} ref={canvasRef} id='myCanvas'/> */}
+        <canvas
+          width={model.inputShape[1]}
+          height={model.inputShape[2]}
+          ref={canvasRef}
+          id="myCanvas"
+        />
+        <a id="canvasDownload" href="#">
+          download image
+        </a>
+      </div>
+
+      <ButtonHandler
+        imageRef={imageRef}
+        cameraRef={cameraRef}
+        videoRef={videoRef}
+        canvasRef={canvasRef}
+      />
+    </div>
+  );
+}
+
 export default SurveillancePage;

@@ -60,6 +60,7 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef, canvasRef }) => {
       </button>
 
       {/* Video Handler */}
+      {/*
       <input
         type="file"
         accept="video/*"
@@ -90,6 +91,7 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef, canvasRef }) => {
         {streaming === "video" ? "Close" : "Open"} Video
       </button>
 
+      */}
       {/* Webcam Handler */}
       <button
         onClick={() => {
@@ -114,6 +116,8 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef, canvasRef }) => {
       >
         {streaming === "camera" ? "Close" : "Open"} Webcam
       </button>
+      {
+        /*
       <button
         onClick={() => {
           // const newCanvas = document.createElement("canvas");
@@ -127,14 +131,15 @@ const ButtonHandler = ({ imageRef, cameraRef, videoRef, canvasRef }) => {
           //   canvasRef.current.width
           // );
           const image = canvasRef.current.toDataURL("image/jpeg");
-          console.log(image)
+          console.log(image);
 
-          
           // document.body.appendChild(newCanvas);
         }}
       >
         capture
       </button>
+         */
+      }
     </div>
   );
 };

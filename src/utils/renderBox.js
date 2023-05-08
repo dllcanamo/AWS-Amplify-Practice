@@ -16,11 +16,14 @@ export const renderBoxes = (
   scores_data,
   classes_data,
   ratios,
-  vidSource
+  vidSource,
+  drawVid = false
 ) => {
   const ctx = canvasRef.getContext("2d");
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clean canvas
-  ctx.drawImage(vidSource, 0, 0, canvasRef.width, canvasRef.height)
+  if (drawVid) {
+    ctx.drawImage(vidSource, 0, 0, canvasRef.width, canvasRef.width)
+  }
 
   const colors = new Colors();
 
@@ -31,10 +34,6 @@ export const renderBoxes = (
   )}px Arial`;
   ctx.font = font;
   ctx.textBaseline = "top";
-
-  // ctx.drawImage(vidSource, 0, 0, ctx.canvas.width, ctx.canvas.height)
-
-  console.log(canvasRef.width, canvasRef.height, ratios)
 
   for (let i = 0; i < scores_data.length; ++i) {
     // filter based on class threshold
@@ -58,7 +57,10 @@ export const renderBoxes = (
       ctx.fillRect(x1, y1, width, height);
       // draw border box.
       ctx.strokeStyle = color;
-      ctx.lineWidth = Math.max(Math.min(ctx.canvas.width, ctx.canvas.height) / 200, 2.5);
+      ctx.lineWidth = Math.max(
+        Math.min(ctx.canvas.width, ctx.canvas.height) / 200,
+        2.5
+      );
       ctx.strokeRect(x1, y1, width, height);
 
       // Draw the label background.
@@ -119,9 +121,11 @@ class Colors {
   static hexToRgba = (hex, alpha) => {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
-      ? `rgba(${[parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)].join(
-          ", "
-        )}, ${alpha})`
+      ? `rgba(${[
+          parseInt(result[1], 16),
+          parseInt(result[2], 16),
+          parseInt(result[3], 16),
+        ].join(", ")}, ${alpha})`
       : null;
   };
 }
