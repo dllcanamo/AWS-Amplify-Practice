@@ -65,7 +65,23 @@
     },
     "reportsfunctionnode": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "awsamplifypractice8dce617b"
+        },
+        {
+          "attributes": [
+            "ApiName",
+            "ApiId"
+          ],
+          "category": "api",
+          "resourceName": "reportsapi"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }

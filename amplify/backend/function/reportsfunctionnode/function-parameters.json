@@ -1,4 +1,18 @@
 {
-  "permissions": {},
+  "permissions": {
+    "auth": {
+      "awsamplifypractice8dce617b": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "reportsapi": [
+        "read"
+      ]
+    }
+  },
   "lambdaLayers": []
 }
