@@ -21,11 +21,18 @@
           "DOMAINALLOWLIST": "pointwest.com.ph",
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
           "s3Key": "amplify-builds/awsamplifypractice8dce617bPreSignup-305770586b4b63307756-build.zip"
+        },
+        "reportsfunction": {
+          "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
+          "s3Key": "amplify-builds/reportsfunction-774349784c63344e7250-build.zip"
         }
       },
       "storage": {
         "aimlbootcampfinalproject": {},
         "aimlBootcamp2023DB": {}
+      },
+      "api": {
+        "reportsapi": {}
       }
     }
   }

@@ -60,8 +60,8 @@ function SurveillancePage() {
         console.log(uploadArray)
         const dateTime = new Date().toISOString()
         console.log(dateTime)
-        // const result = await uploadBlobs(uploadArray) // TODO: Upload logs to dynamodb in this function
-        // console.log(result)
+        const result = await uploadBlobs(uploadArray) // TODO: Upload logs to dynamodb in this function
+        console.log(result)
         setUploadArray([]);
         setS3Upload(false)
       }
