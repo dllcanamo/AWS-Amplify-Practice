@@ -10,6 +10,6 @@ export async function uploadBlobs(arrayOfBlobs) {
     })
     console.log(response);
     // TODO: Upload to DynamoDB
-    // saveDataToDynamo('hello');
+    saveDataToDynamo('hello');
   })
 }
