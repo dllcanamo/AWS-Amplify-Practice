@@ -1,8 +1,19 @@
 import { getDataFromDynamo } from "../utils/reportsService";
+import { useState, useEffect } from "react";
 
 function ReportsPage() {
+  const[data, setData] = useState(null);
 
-  data = getDataFromDynamo()
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await getDataFromDynamo();
+        setData(res)
+      } catch (err) {console.log(err)}
+    }
+    fetchData();
+  },[]);
+  
   // edit the webpage from here
 
   return (
