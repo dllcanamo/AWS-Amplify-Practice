@@ -48,5 +48,3 @@ def handler(event, context):
             },
             'body': json.dumps(event)
         }
-
-

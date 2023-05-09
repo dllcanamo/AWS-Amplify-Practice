@@ -1,6 +1,6 @@
 {
-  "resourceName": "aimlBootcamp2023DB",
-  "tableName": "reportsdb",
+  "resourceName": "aimlReportsDB",
+  "tableName": "aimlReportsDB2023",
   "partitionKey": {
     "fieldName": "uuid",
     "fieldType": "string"

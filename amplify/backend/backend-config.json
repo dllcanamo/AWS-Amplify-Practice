@@ -1,6 +1,6 @@
 {
   "api": {
-    "reportsapipy": {
+    "aimlReportsApi": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "reportsfunction"
+          "resourceName": "aimlReportsFunction"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -52,12 +52,7 @@
     }
   },
   "function": {
-    "awsamplifypractice8dce617bPreSignup": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "reportsfunction": {
+    "aimlReportsFunction": {
       "build": true,
       "dependsOn": [
         {
@@ -67,57 +62,20 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "aimlBootcamp2023DB"
+          "resourceName": "aimlReportsDB"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_DOMAINALLOWLIST": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "awsamplifypractice8dce617bPreSignup"
-        }
-      ]
     },
-    "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "awsamplifypractice8dce617bPreSignup"
-        }
-      ]
-    },
-    "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "awsamplifypractice8dce617bPreSignup"
-        }
-      ]
-    },
-    "AMPLIFY_function_reportsfunction_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "reportsfunction"
-        }
-      ]
-    },
-    "AMPLIFY_function_reportsfunction_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "reportsfunction"
-        }
-      ]
+    "awsamplifypractice8dce617bPreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "storage": {
-    "aimlBootcamp2023DB": {
+    "aimlReportsDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },

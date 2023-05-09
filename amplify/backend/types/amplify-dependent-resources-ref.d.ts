@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "reportsapipy": {
+    "aimlReportsApi": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -18,14 +18,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "awsamplifypractice8dce617bPreSignup": {
+    "aimlReportsFunction": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "reportsfunction": {
+    "awsamplifypractice8dce617bPreSignup": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -34,7 +34,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "aimlBootcamp2023DB": {
+    "aimlReportsDB": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",

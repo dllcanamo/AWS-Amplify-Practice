@@ -16,17 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageaimlBootcamp2023DBName": {
+    "storageaimlReportsDBName": {
       "Type": "String",
-      "Default": "storageaimlBootcamp2023DBName"
+      "Default": "storageaimlReportsDBName"
     },
-    "storageaimlBootcamp2023DBArn": {
+    "storageaimlReportsDBArn": {
       "Type": "String",
-      "Default": "storageaimlBootcamp2023DBArn"
+      "Default": "storageaimlReportsDBArn"
     },
-    "storageaimlBootcamp2023DBStreamArn": {
+    "storageaimlReportsDBStreamArn": {
       "Type": "String",
-      "Default": "storageaimlBootcamp2023DBStreamArn"
+      "Default": "storageaimlReportsDBStreamArn"
     }
   },
   "Conditions": {
@@ -59,12 +59,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "reportsfunction",
+            "aimlReportsFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "reportsfunction",
+                  "aimlReportsFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -82,14 +82,14 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "STORAGE_AIMLBOOTCAMP2023DB_NAME": {
-              "Ref": "storageaimlBootcamp2023DBName"
+            "STORAGE_AIMLREPORTSDB_NAME": {
+              "Ref": "storageaimlReportsDBName"
             },
-            "STORAGE_AIMLBOOTCAMP2023DB_ARN": {
-              "Ref": "storageaimlBootcamp2023DBArn"
+            "STORAGE_AIMLREPORTSDB_ARN": {
+              "Ref": "storageaimlReportsDBArn"
             },
-            "STORAGE_AIMLBOOTCAMP2023DB_STREAMARN": {
-              "Ref": "storageaimlBootcamp2023DBStreamArn"
+            "STORAGE_AIMLREPORTSDB_STREAMARN": {
+              "Ref": "storageaimlReportsDBStreamArn"
             }
           }
         },
@@ -110,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsamplifypracticeLambdaRole5f40c491",
+            "awsamplifypracticeLambdaRolec2316d56",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsamplifypracticeLambdaRole5f40c491",
+                  "awsamplifypracticeLambdaRolec2316d56",
                   "-",
                   {
                     "Ref": "env"
@@ -219,14 +219,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageaimlBootcamp2023DBArn"
+                  "Ref": "storageaimlReportsDBArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storageaimlBootcamp2023DBArn"
+                        "Ref": "storageaimlReportsDBArn"
                       },
                       "index/*"
                     ]
