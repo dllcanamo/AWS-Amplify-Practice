@@ -134,7 +134,7 @@ export const detectVideo = (
 
     /* For Saving to S3 */
 
-    const notFilter = [19, 67] // Should be taken from config?? // Classes that are NOT of compliance // 
+    const notFilter = [0, 4] // Should be taken from config?? // Classes that are NOT of compliance // 
     const isNotCompliance = notFilter.some(r => classes_data.includes(r));
 
     if (!intervalId && imageCollection.length === 0 && isNotCompliance && !isGettingImageArray) {

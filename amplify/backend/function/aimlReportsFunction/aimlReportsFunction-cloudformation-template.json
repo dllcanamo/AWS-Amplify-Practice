@@ -27,6 +27,14 @@
     "storageaimlReportsDBStreamArn": {
       "Type": "String",
       "Default": "storageaimlReportsDBStreamArn"
+    },
+    "apiaimlReportsApiApiName": {
+      "Type": "String",
+      "Default": "apiaimlReportsApiApiName"
+    },
+    "apiaimlReportsApiApiId": {
+      "Type": "String",
+      "Default": "apiaimlReportsApiApiId"
     }
   },
   "Conditions": {
@@ -90,6 +98,12 @@
             },
             "STORAGE_AIMLREPORTSDB_STREAMARN": {
               "Ref": "storageaimlReportsDBStreamArn"
+            },
+            "API_AIMLREPORTSAPI_APINAME": {
+              "Ref": "apiaimlReportsApiApiName"
+            },
+            "API_AIMLREPORTSAPI_APIID": {
+              "Ref": "apiaimlReportsApiApiId"
             }
           }
         },
