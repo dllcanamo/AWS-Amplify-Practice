@@ -15,7 +15,7 @@ function TitleBar(props) {
   return (
     <Flex direction='column'>
       <Flex justifyContent="space-between" alignContent="center" height='2rem'>
-        <Image alt='logo' src='/logo.png' width={'10%'}/>
+        <Image alt='logo' src='/logo.png' width={'6rem'}/>
         <Menu>
           <MenuItem onClick={logout}>Logout</MenuItem>
         </Menu>
