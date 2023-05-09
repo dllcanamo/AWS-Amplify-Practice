@@ -1,0 +1,24 @@
+.reportsSection, .downloadSection {
+    /* background-color: red; */
+}
+
+th:last-child, td:last-child {
+    text-align: right;
+}
+
+td:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    border: 1px solid hsl(190, 100%, 15%) !important;
+}
+
+.image-container {
+    text-align: center;
+}
+
+img {
+    max-width: 500px;
+    max-height: 500px;
+}
