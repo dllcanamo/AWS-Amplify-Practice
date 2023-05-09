@@ -15,6 +15,7 @@ import TopNavbar from "./components/TopNavbar";
 Amplify.configure(awsconfig);
 
 function App() {
+  console.log('bruh')
   return (
     <div id="container">
       <TopNavbar />
