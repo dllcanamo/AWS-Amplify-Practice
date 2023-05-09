@@ -1,6 +1,5 @@
 import * as tf from "@tensorflow/tfjs";
 import { renderBoxes } from "./renderBox";
-import { uploadBlobs } from "./uploadBlobs";
 
 /**
  * Preprocess image / frame before forwarded into the model

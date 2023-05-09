@@ -23,7 +23,7 @@ function SurveillancePage() {
   const canvasRef = useRef(null);
 
   // model configs
-  const modelName = "yolov5n";
+  const modelName = "best";
   const classThreshold = 0.2;
 
   useEffect(() => {
