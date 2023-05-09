@@ -94,15 +94,15 @@ class Colors {
   // ultralytics color palette https://ultralytics.com/
   constructor() {
     this.palette = [
+      "#48F90A",
+      "#92CC17",
+      "#3DDB86",
+      "#1A9334",
       "#FF3838",
       "#FF9D97",
       "#FF701F",
       "#FFB21D",
       "#CFD231",
-      "#48F90A",
-      "#92CC17",
-      "#3DDB86",
-      "#1A9334",
       "#00D4BB",
       "#2C99A8",
       "#00C2FF",
