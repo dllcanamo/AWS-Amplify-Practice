@@ -1,4 +1,13 @@
 {
   "lambdaLayers": [],
-  "permissions": {}
+  "permissions": {
+    "storage": {
+      "aimlBootcamp2023DB": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
 }

@@ -59,9 +59,61 @@
     },
     "reportsfunction": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "aimlBootcamp2023DB"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_DOMAINALLOWLIST": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awsamplifypractice8dce617bPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awsamplifypractice8dce617bPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awsamplifypractice8dce617bPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_reportsfunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reportsfunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_reportsfunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reportsfunction"
+        }
+      ]
     }
   },
   "storage": {

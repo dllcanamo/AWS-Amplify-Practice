@@ -15,6 +15,18 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "storageaimlBootcamp2023DBName": {
+      "Type": "String",
+      "Default": "storageaimlBootcamp2023DBName"
+    },
+    "storageaimlBootcamp2023DBArn": {
+      "Type": "String",
+      "Default": "storageaimlBootcamp2023DBArn"
+    },
+    "storageaimlBootcamp2023DBStreamArn": {
+      "Type": "String",
+      "Default": "storageaimlBootcamp2023DBStreamArn"
     }
   },
   "Conditions": {
@@ -69,6 +81,15 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_AIMLBOOTCAMP2023DB_NAME": {
+              "Ref": "storageaimlBootcamp2023DBName"
+            },
+            "STORAGE_AIMLBOOTCAMP2023DB_ARN": {
+              "Ref": "storageaimlBootcamp2023DBArn"
+            },
+            "STORAGE_AIMLBOOTCAMP2023DB_STREAMARN": {
+              "Ref": "storageaimlBootcamp2023DBStreamArn"
             }
           }
         },
@@ -160,6 +181,58 @@
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageaimlBootcamp2023DBArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageaimlBootcamp2023DBArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

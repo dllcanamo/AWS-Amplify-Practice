@@ -2,8 +2,8 @@ import json
 import boto3
 
 def handler(event, context):
-    # print('received event:')
-    # print(event)
+    print('received event:')
+    print(event)
 
     dynamodb = boto3.client('dynamodb')
 
@@ -12,7 +12,7 @@ def handler(event, context):
         data = event['body']
 
         response = dynamodb.put_item(
-            TableName='reportsdb',
+            TableName='reportsdb-dev',
             Item={
                 'uuid': {'S': 'sample-uuid'},
                 'datetime': {'S': 'sample-date'},
