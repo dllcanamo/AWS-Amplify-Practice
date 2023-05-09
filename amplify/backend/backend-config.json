@@ -57,6 +57,13 @@
       "dependsOn": [
         {
           "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "aimlbootcampfinalproject"
+        },
+        {
+          "attributes": [
             "Name",
             "Arn",
             "StreamArn"

@@ -35,6 +35,10 @@
     "apiaimlReportsApiApiId": {
       "Type": "String",
       "Default": "apiaimlReportsApiApiId"
+    },
+    "storageaimlbootcampfinalprojectBucketName": {
+      "Type": "String",
+      "Default": "storageaimlbootcampfinalprojectBucketName"
     }
   },
   "Conditions": {
@@ -104,6 +108,9 @@
             },
             "API_AIMLREPORTSAPI_APIID": {
               "Ref": "apiaimlReportsApiApiId"
+            },
+            "STORAGE_AIMLBOOTCAMPFINALPROJECT_BUCKETNAME": {
+              "Ref": "storageaimlbootcampfinalprojectBucketName"
             }
           }
         },
@@ -215,6 +222,45 @@
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "s3:ListBucket",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storageaimlbootcampfinalprojectBucketName"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storageaimlbootcampfinalprojectBucketName"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
             {
               "Effect": "Allow",
               "Action": [

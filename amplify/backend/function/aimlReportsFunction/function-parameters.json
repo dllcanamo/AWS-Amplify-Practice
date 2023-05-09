@@ -1,6 +1,12 @@
 {
   "permissions": {
     "storage": {
+      "aimlbootcampfinalproject": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
       "aimlReportsDB": [
         "create",
         "read",

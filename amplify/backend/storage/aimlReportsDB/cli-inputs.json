@@ -9,6 +9,14 @@
     "fieldName": "datetime",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "datetime-index",
+      "partitionKey": {
+        "fieldName": "datetime",
+        "fieldType": "string"
+      }
+    }
+  ],
   "triggerFunctions": []
 }

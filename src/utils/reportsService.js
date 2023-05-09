@@ -18,10 +18,12 @@ function saveDataToDynamo(dataToPass) {
     .catch(error => console.log(error));
 }
 
-function getDataFromDynamo(data) {
-    API.get('aimlReportsApi', '/reports')
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+async function getDataFromDynamo(data) {
+    try {
+        const response = await API.get('aimlReportsApi', '/reports')
+        console.log(response);
+        return response.items
+    } catch (error) {console.log(error)};
 }
 
 export { saveDataToDynamo, getDataFromDynamo };
