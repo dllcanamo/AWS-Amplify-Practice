@@ -1,4 +1,20 @@
 {
+  "api": {
+    "reportsapipy": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reportsfunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "awsamplifypractice8dce617b": {
       "customAuth": false,
@@ -40,6 +56,22 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "reportsfunction": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "aimlBootcamp2023DB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -66,9 +98,29 @@
           "resourceName": "awsamplifypractice8dce617bPreSignup"
         }
       ]
+    },
+    "AMPLIFY_function_reportsfunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reportsfunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_reportsfunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reportsfunction"
+        }
+      ]
     }
   },
   "storage": {
+    "aimlBootcamp2023DB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "aimlbootcampfinalproject": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",

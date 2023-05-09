@@ -3,7 +3,6 @@ import "@aws-amplify/ui-react/styles.css";
 import { Amplify } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
 import LandingPage from "./pages/LandingPage";
 import ReportsPage from "./pages/ReportsPage";
 import SurveillancePage from "./pages/SurveillancePage";
@@ -21,7 +20,6 @@ function App() {
       <TopNavbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
         <Route path="/surveillance" element={<SurveillancePage />} />
         <Route path="/reports" element={<ReportsPage />} />
         <Route path="/user-config" element={<UserConfigPage />} />
