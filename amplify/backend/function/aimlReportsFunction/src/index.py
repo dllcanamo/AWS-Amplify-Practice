@@ -1,5 +1,6 @@
 import json
 import boto3
+import datetime
 
 def handler(event, context):
     print('received event:')
@@ -12,7 +13,7 @@ def handler(event, context):
         data = event['body']
 
         response = dynamodb.put_item(
-            TableName='reportsdb-dev',
+            TableName='aimlReportsDB2023-dev',
             Item={
                 'uuid': {'S': 'sample-uuid'},
                 'datetime': {'S': 'sample-date'},
@@ -36,6 +37,34 @@ def handler(event, context):
             },
             'body': json.dumps('Item/s saved successfully!')
         }
+    elif event['httpMethod'] == 'GET':
+        # table = dynamodb.Table('aimlReportsDB2023-dev')
+
+        today = datetime.date.today().strftime('%Y-%m-%d')
+        response = dynamodb.query(
+            TableName='aimlReportsDB2023-dev',
+            IndexName='datetime-index',
+            KeyConditionExpression='#dt = :today',
+            ExpressionAttributeNames={
+                '#dt': 'datetime'
+            },
+            ExpressionAttributeValues={
+                ':today': {'S': today}
+            }
+        )
+
+        items = response['Items']
+        obj_to_return = {'items': items}
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+            },
+            'body': json.dumps(obj_to_return)
+        }
+
     else:
         # get inputs from dynamoDB
 
@@ -48,5 +77,3 @@ def handler(event, context):
             },
             'body': json.dumps(event)
         }
-
-

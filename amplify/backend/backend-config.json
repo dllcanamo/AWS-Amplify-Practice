@@ -1,6 +1,6 @@
 {
   "api": {
-    "reportsapipy": {
+    "aimlReportsApi": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "reportsfunction"
+          "resourceName": "aimlReportsFunction"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -52,14 +52,16 @@
     }
   },
   "function": {
-    "awsamplifypractice8dce617bPreSignup": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "reportsfunction": {
+    "aimlReportsFunction": {
       "build": true,
       "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "aimlbootcampfinalproject"
+        },
         {
           "attributes": [
             "Name",
@@ -67,14 +69,35 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "aimlBootcamp2023DB"
+          "resourceName": "aimlReportsDB"
         }
       ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "awsamplifypractice8dce617bPreSignup": {
+      "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
+    "AMPLIFY_function_aimlReportsFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aimlReportsFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_aimlReportsFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aimlReportsFunction"
+        }
+      ]
+    },
     "AMPLIFY_function_awsamplifypractice8dce617bPreSignup_DOMAINALLOWLIST": {
       "usedBy": [
         {
@@ -117,7 +140,7 @@
     }
   },
   "storage": {
-    "aimlBootcamp2023DB": {
+    "aimlReportsDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },

@@ -1,0 +1,22 @@
+{
+  "resourceName": "aimlReportsDB",
+  "tableName": "aimlReportsDB2023",
+  "partitionKey": {
+    "fieldName": "uuid",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "datetime",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "datetime-index",
+      "partitionKey": {
+        "fieldName": "datetime",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

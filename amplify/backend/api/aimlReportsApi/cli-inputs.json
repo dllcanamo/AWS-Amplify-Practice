@@ -3,7 +3,7 @@
   "paths": {
     "/reports": {
       "name": "/reports",
-      "lambdaFunction": "reportsfunction",
+      "lambdaFunction": "aimlReportsFunction",
       "permissions": {
         "setting": "open"
       }

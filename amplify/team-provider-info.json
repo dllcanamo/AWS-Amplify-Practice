@@ -25,11 +25,16 @@
         "reportsfunction": {
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
           "s3Key": "amplify-builds/reportsfunction-50503449304e706a4452-build.zip"
+        },
+        "aimlReportsFunction": {
+          "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
+          "s3Key": "amplify-builds/aimlReportsFunction-2f39534b314570396631-build.zip"
         }
       },
       "storage": {
         "aimlbootcampfinalproject": {},
-        "aimlBootcamp2023DB": {}
+        "aimlBootcamp2023DB": {},
+        "aimlReportsDB": {}
       },
       "api": {
         "reportsapipy": {}
