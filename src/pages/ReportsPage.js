@@ -10,6 +10,7 @@ function ReportRow({ fileName }) {
   useEffect(() => {
     if (imageRef.current) {
       imageRef.current.src = images;
+      console.log('uwu')
     }
   }, [images]);
 
