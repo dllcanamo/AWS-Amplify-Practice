@@ -108,7 +108,9 @@ function SurveillancePage() {
               classThreshold,
               canvasRef.current,
               uploadArray,
-              setUploadArray
+              setUploadArray,
+              s3Upload,
+              setS3Upload
             )
           }
         />
@@ -123,7 +125,9 @@ function SurveillancePage() {
               classThreshold,
               canvasRef.current,
               uploadArray,
-              setUploadArray
+              setUploadArray,
+              s3Upload,
+              setS3Upload
             )
           }
         />

@@ -89,7 +89,9 @@ export const detectVideo = (
   classThreshold,
   canvasRef,
   uploadArray,
-  setUploadArray
+  setUploadArray,
+  s3Upload,
+  setS3Upload
 ) => {
   const [modelWidth, modelHeight] = model.inputShape.slice(1, 3); // get model width and height
   let imageCollection = [];
@@ -97,7 +99,7 @@ export const detectVideo = (
   const newCanvas = document.createElement("canvas");
   newCanvas.width = canvasRef.width;
   newCanvas.height = canvasRef.height;
-  const interval = 1000;
+  const interval = 2000;
   let isGettingImageArray = false
 
   /**
@@ -134,10 +136,11 @@ export const detectVideo = (
 
     /* For Saving to S3 */
 
-    const notFilter = [19, 67] // Should be taken from config?? // Classes that are NOT of compliance // 
+    const notFilter = [0, 4] // Should be taken from config?? // Classes that are NOT of compliance // 
     const isNotCompliance = notFilter.some(r => classes_data.includes(r));
+    console.log('Currently Uploading to S3?: ', s3Upload)
 
-    if (!intervalId && imageCollection.length === 0 && isNotCompliance && !isGettingImageArray) {
+    if (!intervalId && imageCollection.length === 0 && isNotCompliance && !isGettingImageArray && !s3Upload) {
       console.log('detected no helmet, no mask, etc')
       isGettingImageArray = true
       console.log('starting getting image array')

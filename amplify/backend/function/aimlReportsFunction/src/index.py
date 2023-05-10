@@ -1,24 +1,30 @@
 import json
 import boto3
 import datetime
+import uuid
 
 def handler(event, context):
     print('received event:')
     print(event)
 
     dynamodb = boto3.client('dynamodb')
+    data = json.loads(event['body'])
 
     if event['httpMethod'] == 'POST':
         # save item to dynamoDB
-        data = event['body']
+        PK = str(uuid.uuid1())
+
+        today = datetime.date.today().strftime('%Y-%m-%d')
+        data_object = data['data']
+        
 
         response = dynamodb.put_item(
             TableName='aimlReportsDB2023-dev',
             Item={
-                'uuid': {'S': 'sample-uuid'},
-                'datetime': {'S': 'sample-date'},
+                'uuid': {'S': PK},
+                'datetime': {'S': today},
                 'description': {'S': 'sample-label'},
-                'path_to_img': {'S': 'sample/path/to/img'}
+                'path_to_img': {'S': str(data_object['path_to_img'])}
             }
         )
 
