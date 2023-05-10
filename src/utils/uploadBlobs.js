@@ -1,4 +1,4 @@
-jmport {Storage} from 'aws-amplify'
+import {Storage} from 'aws-amplify'
 import { saveDataToDynamo } from './reportsService'
 
 export async function uploadBlobs(arrayOfBlobs) {

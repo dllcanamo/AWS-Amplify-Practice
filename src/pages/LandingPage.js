@@ -70,7 +70,6 @@ function LandingPage() {
       </Grid>
       <br></br>
       <br></br>
-      <Heading level={4}>Non-Compliance Notifcations</Heading>
       <Table>
       </Table>
     </>

@@ -8,11 +8,11 @@ def handler(event, context):
     print(event)
 
     dynamodb = boto3.client('dynamodb')
-    data = json.loads(event['body'])
 
     if event['httpMethod'] == 'POST':
         # save item to dynamoDB
         PK = str(uuid.uuid1())
+        data = json.loads(event['body'])
 
         today = datetime.date.today().strftime('%Y-%m-%d')
         data_object = data['data']
@@ -45,6 +45,9 @@ def handler(event, context):
         }
     elif event['httpMethod'] == 'GET':
         # table = dynamodb.Table('aimlReportsDB2023-dev')
+        print(event)
+        data = json.loads(event['queryStringParameters'])
+        print(data)
 
         today = datetime.date.today().strftime('%Y-%m-%d')
         response = dynamodb.query(

@@ -17,11 +17,17 @@ function saveDataToDynamo(dataToPass) {
     .catch((error) => console.log(error));
 }
 
-function getDataFromDynamo(data) {
-  API.get("aimlReportsApi", "/reports")
-    .then((response) => response)
-    .catch((error) => console.log(error));
+async function getDataFromDynamo(data) {
+  console.log(data);
+  const body = {
+    response: true,
+    queryStringParameters: {
+      startingDate: data,
+    },
+  };
 
+  const response = await API.get("aimlReportsApi", "/reports", body);
+  return response;
 }
 
 export { saveDataToDynamo, getDataFromDynamo };

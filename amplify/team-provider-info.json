@@ -28,7 +28,7 @@
         },
         "aimlReportsFunction": {
           "deploymentBucketName": "amplify-awsamplifypractice-dev-103743-deployment",
-          "s3Key": "amplify-builds/aimlReportsFunction-50546478675572426b30-build.zip"
+          "s3Key": "amplify-builds/aimlReportsFunction-486239632f5851505476-build.zip"
         }
       },
       "storage": {
