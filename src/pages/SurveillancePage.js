@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import "@tensorflow/tfjs-backend-webgl"; // set backend to webgl
 import Loader from "../components/loader";
+import { Loader as Load }from "@aws-amplify/ui-react";
 import ButtonHandler from "../components/btn-handler";
 import { detectImage, detectVideo } from "../utils/detect";
 import classes from "./surveillance-page.module.css";
@@ -78,7 +79,10 @@ function SurveillancePage() {
   return (
     <div className={classes.App}>
       {loading.loading && (
-        <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>
+        <>
+          <Load></Load>
+          <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>
+        </>
       )}
       <div className={classes.header}>
         <h1>Insert appname here</h1>
