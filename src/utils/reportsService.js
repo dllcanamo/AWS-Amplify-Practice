@@ -1,29 +1,27 @@
 import { API } from "aws-amplify";
 
 function saveDataToDynamo(dataToPass) {
-    const body = {
-        body: {
-            action: 'POST',
-            data: {
-                uuid: 'abc123',
-                datetime: 'date123',
-                description: 'label',
-                path_to_img: 'path/to/img'
-            }
-        }
-    }
+  console.log(dataToPass);
+  const body = {
+    body: {
+      action: "POST",
+      data: {
+        description: "label",
+        path_to_img: dataToPass,
+      },
+    },
+  };
 
-    API.post('aimlReportsApi', '/reports', body)
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+  API.post("aimlReportsApi", "/reports", body)
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
 }
 
-async function getDataFromDynamo(data) {
-    try {
-        const response = await API.get('aimlReportsApi', '/reports')
-        console.log(response);
-        return response.items
-    } catch (error) {console.log(error)};
+function getDataFromDynamo(data) {
+  API.get("aimlReportsApi", "/reports")
+    .then((response) => response)
+    .catch((error) => console.log(error));
+
 }
 
 export { saveDataToDynamo, getDataFromDynamo };
