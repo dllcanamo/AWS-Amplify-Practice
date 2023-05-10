@@ -29,8 +29,9 @@ function SurveillancePage() {
 
   useEffect(() => {
     tf.ready().then(async () => {
+      console.log(window.location.origin)
       const yolov5 = await tf.loadGraphModel(
-        `${window.location.origin}/${modelName}_web_model/model.json`,
+        `${process.env.PUBLIC_URL}/${modelName}_web_model/model.json`,
         {
           onProgress: (fractions) => {
             setLoading({ loading: true, progress: fractions }); // set loading fractions
