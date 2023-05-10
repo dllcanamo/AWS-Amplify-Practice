@@ -21,6 +21,7 @@ function getDataFromDynamo(data) {
   API.get("aimlReportsApi", "/reports")
     .then((response) => response)
     .catch((error) => console.log(error));
+
 }
 
 export { saveDataToDynamo, getDataFromDynamo };
