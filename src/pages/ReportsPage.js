@@ -50,7 +50,7 @@ function ReportsPage() {
         const fetchedFileName = element.path_to_img.S;
         const fetchedDateTime = element.datetime.S;
         console.log(fetchedDateTime);
-        fetchedFileNames.push(fetchedFileName);
+        fetchedFileNames.push([fetchedFileName,fetchedDateTime]);
       });
 
       setFileNames(fetchedFileNames);
@@ -81,7 +81,7 @@ function ReportsPage() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const data = await Storage.get(fileName, {
+          const data = await Storage.get(fileName[0], {
             contentType: "image/jpeg",
             download: true,
           });
@@ -96,7 +96,7 @@ function ReportsPage() {
 
     return (
       <TableRow key={index}>
-          <TableCell>Dummy Datetime</TableCell>
+          <TableCell>{fileName[1]}</TableCell>
           <TableCell style={{float:'right'}}>
             {/* {images !== null ? <img src="#" ref={imageRef} /> : <Loader></Loader>} */}
             {images !== null ? (

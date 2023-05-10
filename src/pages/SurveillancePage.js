@@ -31,7 +31,7 @@ function SurveillancePage() {
     tf.ready().then(async () => {
       console.log(window.location.origin)
       const yolov5 = await tf.loadGraphModel(
-        `${process.env.PUBLIC_URL}/${modelName}_web_model/model.json`,
+        `../${modelName}_web_model/model.json`,
         {
           onProgress: (fractions) => {
             setLoading({ loading: true, progress: fractions }); // set loading fractions
@@ -86,7 +86,6 @@ function SurveillancePage() {
         </>
       )}
       <div className={classes.header}>
-        <h1>Insert appname here</h1>
       </div>
 
       <div className={classes.content}>
