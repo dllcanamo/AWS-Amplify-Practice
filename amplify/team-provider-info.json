@@ -37,7 +37,8 @@
         "aimlReportsDB": {}
       },
       "api": {
-        "reportsapipy": {}
+        "reportsapipy": {},
+        "aimlReportsApi": {}
       }
     }
   }
